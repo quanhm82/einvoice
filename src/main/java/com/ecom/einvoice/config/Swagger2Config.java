@@ -22,7 +22,7 @@ public class Swagger2Config {
 	
 	@Bean
 	public Docket orderApi() {
-		return new Docket(DocumentationType.SWAGGER_2).groupName("Order")
+		return new Docket(DocumentationType.SWAGGER_2).groupName("Invoice")
 		        .select() 
 		        .apis(RequestHandlerSelectors.any()) 
 		        .paths(PathSelectors.ant("/api/**").and(PathSelectors.ant("/api/profile/**").negate()))
@@ -32,7 +32,7 @@ public class Swagger2Config {
 	
 	private ApiInfo getApiInfo() {
 	    return new ApiInfo(
-	            "Product Service",
+	            "Invoice Service",
 	            "Simple POC for eCommerce",
 	            "0.0.1",
 	            "....",
