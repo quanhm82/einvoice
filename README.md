@@ -1,19 +1,28 @@
 # Getting Started
 
-### Reference Documentation
-For further reference, please consider the following sections:
+### Introduction
+eInvoice service expose APIs (HATEOAS) for read/save resources such as Invoice. Swagger-ui is rendered at runtime to make it easier to call APIs.
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.3.1.RELEASE/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.3.1.RELEASE/maven-plugin/reference/html/#build-image)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.3.1.RELEASE/reference/htmlsingle/#boot-features-jpa-and-spring-data)
-* [Rest Repositories](https://docs.spring.io/spring-boot/docs/2.3.1.RELEASE/reference/htmlsingle/#howto-use-exposing-spring-data-repositories-rest-endpoint)
 
 ### Guides
-The following guides illustrate how to use some features concretely:
+Building jar file by maven
+```sh
+$ mvn clean install
+```
+Starting eOrder instance with "dev" profile.
+```sh
+$ cd target
+...
+$ java -jar eorder-{version}.jar -Dspring.profile.active=dev
+```
+Access eDiscovery by http://localhost:9899/swagger-ui.html
 
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-* [Accessing JPA Data with REST](https://spring.io/guides/gs/accessing-data-rest/)
-* [Accessing Neo4j Data with REST](https://spring.io/guides/gs/accessing-neo4j-data-rest/)
-* [Accessing MongoDB Data with REST](https://spring.io/guides/gs/accessing-mongodb-data-rest/)
-
+### Noted CURL
+-Create an Invoice
+```sh
+curl -X POST "http://localhost:9899/invoice" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"customerName\": \"George Bane\", \"orderId\": \"order_id\", \"status\": \"init\", \"totalAmount\": 700}"
+```
+-Update Invoice Status to confirmed
+```sh
+curl -X PATCH "http://localhost:9899/invoice/invoice_id" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"status\": \"confirmed\"}"
+```

@@ -22,10 +22,10 @@ public class Swagger2Config {
 	
 	@Bean
 	public Docket orderApi() {
-		return new Docket(DocumentationType.SWAGGER_2).groupName("Invoice")
+		return new Docket(DocumentationType.SWAGGER_2).groupName("invoice")
 		        .select() 
 		        .apis(RequestHandlerSelectors.any()) 
-		        .paths(PathSelectors.ant("/api/**").and(PathSelectors.ant("/api/profile/**").negate()))
+		        .paths(PathSelectors.any())
 		        .build()
 		        .apiInfo(getApiInfo());
 	}

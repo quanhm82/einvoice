@@ -7,8 +7,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
+import org.apache.commons.lang.RandomStringUtils;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
@@ -32,60 +34,29 @@ public class Invoice {
 	@Column(name = "ORDER_ID")
 	private String orderId;
 	
+	@Column(name = "INVOICE_NO", unique = true)
+	private String invoiceNumber;
+	
 	@Column(name = "ORDER_DATE")
 	private Timestamp createDate;;
 	
-	@Column(name = "CUSTOMER_PHONE")
-	private String customerPhone;
-	
 	@Column(name = "CUSTOMER_NAME")
 	private String customerName;
-	
-	@Column(name = "SHIPPING_ADDR")
-	private String shippingAddress;
-	
-	@Column(name = "CITY")
-	private String city;
-	
-	@Column(name = "DELIVERY_DATE")
-	private Timestamp deliveryDate;
-	
+		
 	@Column(name = "AMOUNT")
 	private double totalAmount;
 	
 	@Column(name = "STATUS")
 	private String status;
-
-	public String getCustomerPhone() {
-		return customerPhone;
+	
+	@PrePersist
+	protected void genInvoiceNumber() {
+		this.invoiceNumber = RandomStringUtils.random(15, true, true);
+		this.createDate = new Timestamp(System.currentTimeMillis());
 	}
 
-	public void setCustomerPhone(String customerPhone) {
-		this.customerPhone = customerPhone;
-	}
-
-	public String getShippingAddress() {
-		return shippingAddress;
-	}
-
-	public void setShippingAddress(String shippingAddress) {
-		this.shippingAddress = shippingAddress;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public Timestamp getDeliveryDate() {
-		return deliveryDate;
-	}
-
-	public void setDeliveryDate(Timestamp deliveryDate) {
-		this.deliveryDate = deliveryDate;
+	public String getInvoiceNumber() {
+		return invoiceNumber;
 	}
 
 	public String getStatus() {

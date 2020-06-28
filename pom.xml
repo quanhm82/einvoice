@@ -10,7 +10,7 @@
 	<artifactId>e-invoice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>eorder</name>
-	<description>Order service for e-commerce</description>
+	<description>Invoice service for e-commerce</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -81,6 +81,18 @@
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>3.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zipkin</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
 		</dependency>
 	</dependencies>
 
