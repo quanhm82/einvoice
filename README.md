@@ -13,9 +13,9 @@ Starting eOrder instance with "dev" profile.
 ```sh
 $ cd target
 ...
-$ java -jar eorder-{version}.jar -Dspring.profile.active=dev
+$ java -jar e-invoice-{version}.jar -Dspring.profile.active=dev
 ```
-Access eDiscovery by http://localhost:9899/swagger-ui.html
+Access eInvoice by http://localhost:9899/swagger-ui.html
 
 ### Noted CURL
 -Create an Invoice

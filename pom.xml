@@ -9,7 +9,7 @@
 	<groupId>com.ecom.einvoice</groupId>
 	<artifactId>e-invoice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>eorder</name>
+	<name>einvoice</name>
 	<description>Invoice service for e-commerce</description>
 
 	<properties>
